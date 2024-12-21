@@ -5,30 +5,32 @@
 
 :triangular_flag_on_post:**News**(Dec 26, 2024): After the meeting, we will upload this paper to arXiv.
 
-
+## Motivation
+In the industry, since time series data often arrives sequentially and is accompanied by temporal distribution shifts. We observe that nonstationarity is brought by the unknown interventions on short-term states. Moreover, to address the online forecasting task, it is intuitive to find that we should disentangle the long/short-term states from the time series with unknown
+interventions
 <p align="center">
-<img src=".\img\informer.png" height = "360" alt="" align=center />
+<img src=".\LSTD-main\Image\intervention.png" height = "300" alt="" align=center />
 <br><br>
-<b>Figure 1.</b> The architecture of Informer.
+<b>Figure 1.</b> llustration of sequentially arriving exchange rate data, which is influenced by short-term customs duties and long-
+term financial revenue. Moreover, the short-term customs duties are intervened by sudden customs tariff policies.
 </p>
 
-## ProbSparse Attention
-The self-attention scores form a long-tail distribution, where the "active" queries lie in the "head" scores and "lazy" queries lie in the "tail" area. We designed the ProbSparse Attention to select the "active" queries rather than the "lazy" queries. The ProbSparse Attention with Top-u queries forms a sparse Transformer by the probability distribution.
-`Why not use Top-u keys?` The self-attention layer's output is the re-represent of input. It is formulated as a weighted combination of values w.r.t. the score of dot-product pairs. The top queries with full keys encourage a complete re-represent of leading components in the input, and it is equivalent to selecting the "head" scores among all the dot-product pairs. If we choose Top-u keys, the full keys just preserve the trivial sum of values within the "long tail" scores but wreck the leading components' re-represent.
+## Model
+- To preserve the long-term dependencies in the long-term latent variables, we propose the smooth constraint. $A_{z_h^s}$ and $A_{z_e^s}$ denote the association matrices of the start half and the end half segments, hence we can restrict the long-term dependencies by restricting the similarity of these two matrices.
+- We propose the interrupted dependency constraint for the short-term variables. Since the nonstationarity is assumed to be led by the interventions to the short-term latent variables, given $z_{1:H}^d$, if intervention occurs at $\tau$-th time step, and $2<\tau<H-1$, then $\frac{\partial \varepsilon_{H, i}^d}{\partial z_{\tau-1,j}^d}=0$, where $i,j \in { 1,\cdots,n_d}$, hence we can restrict the short-term dependencies by restricting the sparsity of the matrice.
 <p align="center">
-<img src=".\img\probsparse_intro.png" height = "320" alt="" align=center />
+<img src=".\LSTD-main\Image\model.png" height = "320" alt="" align=center />
 <br><br>
-<b>Figure 2.</b> The illustration of ProbSparse Attention.
-</p>
+<b>Figure 2.</b> The framework of the proposed LSTD model. The long/short-term latent variables $z_{1:L}^d$ and $z_{1:L}^s$ are extracted from the encoder. And the latent transition module is used to estimated the $z_{L+1:H}^d$ and the $z_{L+1:H}^s$ from $z_{1:L}^d$ and $z_{1:L}^s$, respectively. The long-term and short-term prior networks are used to estimate the prior distributions.
 
 ## Requirements
 
-- Python 3.6
-- matplotlib == 3.1.1
-- numpy == 1.19.4
-- pandas == 0.25.1
-- scikit_learn == 0.21.3
-- torch == 1.8.0
+- Python 3.8
+- torch == 2.3.1
+- numpy == 1.23.5
+- pandas == 1.5.3
+- einops == 0.4.0
+- tqdm == 4.64.1
 
 Dependencies can be installed using the following command:
 ```bash
@@ -37,19 +39,7 @@ pip install -r requirements.txt
 
 ## Data
 
-The ETT dataset used in the paper can be downloaded in the repo [ETDataset](https://github.com/zhouhaoyi/ETDataset).
-The required data files should be put into `data/ETT/` folder. A demo slice of the ETT data is illustrated in the following figure. Note that the input of each dataset is zero-mean normalized in this implementation.
-
-<p align="center">
-<img src="./img/data.png" height = "168" alt="" align=center />
-<br><br>
-<b>Figure 3.</b> An example of the ETT data.
-</p>
-
-The ECL data and Weather data can be downloaded here.
-- [Google Drive](https://drive.google.com/drive/folders/1ohGYWWohJlOlb2gsGTeEq3Wii2egnEPR?usp=sharing)
-- [BaiduPan](https://pan.baidu.com/s/1wyaGUisUICYHnfkZzWCwyA), password: 6gan 
-
+We have already put the datasets in the .\LSTD-main\data\ file and it can be used directly. 
 ## Reproducibility
 
 To easily reproduce the results you can follow the next steps:
