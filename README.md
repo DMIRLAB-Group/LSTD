@@ -48,6 +48,27 @@ python loop_LSTD.py -seed $seed -dataset $dataset -len $1/24/60
 ```
 Multiple seeds and datasets can be run at one time.The important parameters are in file LSTD_config.py and you can go inside to change the parameters you want.
 
+And we provide explanations for the important parameters:
+| Parameter name | Description of parameter |
+| --- | --- |
+| data           | The dataset name                                             |
+| root_path      | The root path of the data file (defaults to `./data/ETT/`)    |
+| data_path      | The data file name (defaults to `ETTh2.csv`)                  |
+| features       | The forecasting task (defaults to `M`). This can be set to `M`,`S`,`MS` (M : multivariate predict multivariate, S : univariate predict univariate, MS : multivariate predict univariate) |
+| seq_len | Input sequence length of Informer encoder (defaults to 60) |
+| label_len | Start token length of Informer decoder (defaults to 0) |
+| pred_len | Prediction sequence length (defaults to 1) |
+| des | exp description |
+| itr | experiments times |
+| test_bsz | Batch size in test |
+| train_epochs | Epochs in train |
+| online_learning | It is online learning or not |
+| L1_weight | The weights of L1 regularization. |
+| L2_weight | The weights of L2 regularization. |
+| dropout | The magnitude of dropout. |
+| zd_kl_weight | The weight of the prior for the short-term effect. |
+| zs_kl_weight | The weight of the prior for the long-term effect. |
+
 More parameter information please refer to `main.py`.
 
 
