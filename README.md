@@ -11,7 +11,7 @@ In the industry, since time series data often arrives sequentially and is accomp
 <img src=".\LSTD-main\Image\intervention.png" height = "300" alt="" align=center />
 <br><br>
 <b>Figure 1.</b> llustration of sequentially arriving exchange rate data, which is influenced by short-term customs duties and long-
-term financial revenue. Moreover, the short-term customs duties are intervened by sudden customs tariff policies.
+term financial revenue. The short-term customs duties are intervened by sudden customs tariff policies.
 </p>
 
 ## Model
