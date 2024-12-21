@@ -64,7 +64,7 @@ The main results are shown in Figure 3 and the visualization of the results is s
 <p align="center">
 <img src=".\LSTD-main\Image\pred.png" height = "300" alt="" align=center />
 <br><br>
-<b>Figure 4.</b> The  figure (a) represents the visualization of the proposed LSTD and other baselines. The blue lines denote the ground-truth time series data and the lines with other colors denote the predicted results of different methods. The figure (b) shows the visualization of the LSTD method for detecting interventions. The yellow lines represent the real-time series data, and the red lines represent the gradient. When an intervention occurs (black dotted lines), the gradient decreases, indicating that the model forgets past data. Conversely, it increases when there is no intervention..
+<b>Figure 4.</b> The  figure (a) represents the visualization of the proposed LSTD and other baselines. The blue lines denote the ground-truth time series data and the lines with other colors denote the predicted results of different methods. The figure (b) shows the visualization of the LSTD method for detecting interventions. The yellow lines represent the real-time series data, and the red lines represent the gradient. When an intervention occurs (black dotted lines), the gradient decreases, indicating that the model forgets past data. Conversely, it increases when there is no intervention.
 </p>
 
 
@@ -73,7 +73,7 @@ The main results are shown in Figure 3 and the visualization of the results is s
 If you find this repository useful in your research, please consider citing the following papers:
 
 ```
-To be continued..
+To be continued...
 ```
 
 ## Contact
