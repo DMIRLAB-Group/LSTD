@@ -6,8 +6,7 @@
 :triangular_flag_on_post:**News**(Dec 26, 2024): After the meeting, we will upload this paper to arXiv.
 
 ## Motivation
-In the industry, since time series data often arrives sequentially and is accompanied by temporal distribution shifts. We observe that nonstationarity is brought by the unknown interventions on short-term states. Moreover, to address the online forecasting task, it is intuitive to find that we should disentangle the long/short-term states from the time series with unknown
-interventions
+In the industry, since time series data often arrives sequentially and is accompanied by temporal distribution shifts. We observe that nonstationarity is brought by the unknown interventions on short-term states. Moreover, to address the online forecasting task, it is intuitive to find that we should disentangle the long/short-term states from the time series with unknown interventions as shown in Figure 1.
 <p align="center">
 <img src=".\LSTD-main\Image\intervention.png" height = "300" alt="" align=center />
 <br><br>
@@ -18,6 +17,7 @@ term financial revenue. Moreover, the short-term customs duties are intervened b
 ## Model
 - To preserve the long-term dependencies in the long-term latent variables, we propose the smooth constraint. $A_{z_h^s}$ and $A_{z_e^s}$ denote the association matrices of the start half and the end half segments, hence we can restrict the long-term dependencies by restricting the similarity of these two matrices.
 - We propose the interrupted dependency constraint for the short-term variables. Since the nonstationarity is assumed to be led by the interventions to the short-term latent variables, given $z_{1:H}^d$, if intervention occurs at $\tau$-th time step, and $2<\tau<H-1$, then $\frac{\partial \varepsilon_{H, i}^d}{\partial z_{\tau-1,j}^d}=0$, where $i,j \in { 1,\cdots,n_d}$, hence we can restrict the short-term dependencies by restricting the sparsity of the matrice.
+- Our model overview is as shown in Figure 2.
 <p align="center">
 <img src=".\LSTD-main\Image\model.png" height = "320" alt="" align=center />
 <br><br>
@@ -53,65 +53,32 @@ More parameter information please refer to `main.py`.
 
 ## <span id="resultslink">Results</span>
 
+The main results are shown in Figure 3 and the visualization of the results is shown in Figure 4.
+
 <p align="center">
-<img src="./img/result_univariate.png" height = "500" alt="" align=center />
+<img src=".\LSTD-main\Image\results.png" height = "500" alt="" align=center />
 <br><br>
-<b>Figure 4.</b> Univariate forecasting results.
+<b>Figure 3.</b> Mean Square Error (MSE) results on the different datasets. TCN is abbreviated as T.
 </p>
 
 <p align="center">
-<img src="./img/result_multivariate.png" height = "500" alt="" align=center />
+<img src=".\LSTD-main\Image\pred.png" height = "300" alt="" align=center />
 <br><br>
-<b>Figure 5.</b> Multivariate forecasting results.
+<b>Figure 4.</b> The  figure (a) represents the visualization of the proposed LSTD and other baselines. The blue lines denote the ground-truth time series data and the lines with other colors denote the predicted results of different methods. The figure (b) shows the visualization of the LSTD method for detecting interventions. The yellow lines represent the real-time series data, and the red lines represent the gradient. When an intervention occurs (black dotted lines), the gradient decreases, indicating that the model forgets past data. Conversely, it increases when there is no intervention..
 </p>
 
-
-## FAQ
-If you run into a problem like `RuntimeError: The size of tensor a (98) must match the size of tensor b (96) at non-singleton dimension 1`, you can check torch version or modify code about `Conv1d` of `TokenEmbedding` in `models/embed.py` as the way of circular padding mode in Conv1d changed in different torch versions.
 
 
 ## <span id="citelink">Citation</span>
 If you find this repository useful in your research, please consider citing the following papers:
 
 ```
-@article{haoyietal-informerEx-2023,
-  author    = {Haoyi Zhou and
-               Jianxin Li and
-               Shanghang Zhang and
-               Shuai Zhang and
-               Mengyi Yan and
-               Hui Xiong},
-  title     = {Expanding the prediction capacity in long sequence time-series forecasting},
-  journal   = {Artificial Intelligence},
-  volume    = {318},
-  pages     = {103886},
-  issn      = {0004-3702},
-  year      = {2023},
-}
-```
-```
-@inproceedings{haoyietal-informer-2021,
-  author    = {Haoyi Zhou and
-               Shanghang Zhang and
-               Jieqi Peng and
-               Shuai Zhang and
-               Jianxin Li and
-               Hui Xiong and
-               Wancai Zhang},
-  title     = {Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting},
-  booktitle = {The Thirty-Fifth {AAAI} Conference on Artificial Intelligence, {AAAI} 2021, Virtual Conference},
-  volume    = {35},
-  number    = {12},
-  pages     = {11106--11115},
-  publisher = {{AAAI} Press},
-  year      = {2021},
-}
+To be continued..
 ```
 
 ## Contact
-If you have any questions, feel free to contact Haoyi Zhou through Email (zhouhaoyi1991@gmail.com) or Github issues. Pull requests are highly welcomed!
+If you have any questions, feel free to contact Zijian Li through Email (leizigin@gmail.com) or Github issues. Pull requests are highly welcomed!
 
 ## Acknowledgments
-Thanks for the computing infrastructure provided by Beijing Advanced Innovation Center for Big Data and Brain Computing ([BDBC](http://bdbc.buaa.edu.cn/)).
-At the same time, thank you all for your attention to this work! [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fzhouhaoyi%2FInformer2020&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Hits+Count&edge_flat=false)](https://hits.seeyoufarm.com)
-[![Stargazers repo roster for @zhouhaoyi/Informer2020](https://reporoster.com/stars/zhouhaoyi/Informer2020)](https://github.com/zhouhaoyi/Informer2020/stargazers)
+Thanks for National Science and Technology Major Project (2021ZD0111501), National Science Fund for Excellent Young Scholars (62122022) and Natural Science Foundation of China (U24A20233, 62206064, 62206061).
+At the same time, thank you all for your attention to this work! 
