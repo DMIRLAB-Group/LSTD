@@ -74,7 +74,7 @@ More parameter information please refer to `main.py`.
 
 ## <span id="resultslink">Results</span>
 
-The main results are shown in Figure 3 and the visualization of the results is shown in Figure 4.
+The main results are shown in table 3 and the visualization of the results is shown in Figure 4.
 
 <p align="center">
 <img src=".\LSTD-main\Image\results.png" height = "500" alt="" align=center />
