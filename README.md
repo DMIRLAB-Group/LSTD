@@ -44,7 +44,7 @@ We have already put the datasets in the .\LSTD-main\data\ file.You just should u
 
 To easily reproduce the results you can run the following commands:
 ```
-python loop_LSTD.py -seed $seed -dataset $dataset -len $1/24/60
+python run_LSTD.py -seed $seed -dataset $dataset -len $1/24/60
 ```
 Multiple seeds and datasets can be run at one time.The important parameters are in file LSTD_config.py and you can go inside to change the parameters you want.
 
@@ -79,14 +79,8 @@ The main results are shown in Figure 3 and the visualization of the results is s
 <p align="center">
 <img src=".\LSTD-main\Image\results.png" height = "500" alt="" align=center />
 <br><br>
-<b>Figure 3.</b> Mean Square Error (MSE) results on the different datasets. TCN is abbreviated as T.
 </p>
 
-<p align="center">
-<img src=".\LSTD-main\Image\pred.png" height = "300" alt="" align=center />
-<br><br>
-<b>Figure 4.</b> The  figure (a) represents the visualization of the proposed LSTD and other baselines. The blue lines denote the ground-truth time series data and the lines with other colors denote the predicted results of different methods. The figure (b) shows the visualization of the LSTD method for detecting interventions. The yellow lines represent the real-time series data, and the red lines represent the gradient. When an intervention occurs (black dotted lines), the gradient decreases, indicating that the model forgets past data. Conversely, it increases when there is no intervention.
-</p>
 
 
 
@@ -96,10 +90,3 @@ If you find this repository useful in your research, please consider citing the 
 ```
 To be continued...
 ```
-
-## Contact
-If you have any questions, feel free to contact Zijian Li through Email (leizigin@gmail.com) or Github issues. Pull requests are highly welcomed!
-
-## Acknowledgments
-Thanks for National Science and Technology Major Project (2021ZD0111501), National Science Fund for Excellent Young Scholars (62122022) and Natural Science Foundation of China (U24A20233, 62206064, 62206061).
-At the same time, thank you all for your attention to this work! 
