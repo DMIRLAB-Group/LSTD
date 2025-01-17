@@ -55,8 +55,8 @@ And we provide explanations for the important parameters:
 | root_path      | The root path of the data file (defaults to `./data/ETT/`)    |
 | data_path      | The data file name (defaults to `ETTh2.csv`)                  |
 | features       | The forecasting task (defaults to `M`). This can be set to `M`,`S`,`MS` (M : multivariate predict multivariate, S : univariate predict univariate, MS : multivariate predict univariate) |
-| seq_len | Input sequence length of Informer encoder (defaults to 60) |
-| label_len | Start token length of Informer decoder (defaults to 0) |
+| seq_len | Input sequence length of LSTD encoder (defaults to 60) |
+| label_len | Start token length of LSTD decoder (defaults to 0) |
 | pred_len | Prediction sequence length (defaults to 1) |
 | des | exp description |
 | itr | experiments times |
